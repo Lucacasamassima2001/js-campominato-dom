@@ -26,7 +26,6 @@ function play(){
     let value = diffoption.options[diffoption.selectedIndex].value;
     console.log(value);
     creategrid(value, elegrid)
-    
 }
 )
 
@@ -61,12 +60,12 @@ function creategrid(ncell, elecontainer){
         } 
         const listcells = document.querySelectorAll(`.cell`);
         for(let i = 0; i < listcells.length ; i++){
-            const cell = listcells[i];
+            const cell = listcells[i]
     // FUNZIONE COLORI
 
             cell.addEventListener("click",
-            function colour(){
-                if(finish === false){
+            function (){
+                if(finish == false){
                     this.classList.toggle("clicked");
                     cell.innerHTML = i + 1;
                     console.log("cella numero: " + (i + 1));
@@ -74,9 +73,10 @@ function creategrid(ncell, elecontainer){
                     document.getElementById("score").innerHTML = "Il tuo punteggio è: " + points
                     console.log(points)
                 }if(bombs.includes(i + 1)){
-                    this.classList.toggle("bomb");
-                    document.getElementById("score").innerHTML = "Il tuo punteggio è: " + points + " Hai perso!";
+                    this.classList.add("bomb");
                     finish = true
+                    document.getElementById("score").innerHTML = "Il tuo punteggio è: " + [points - 1] + " Hai perso!";
+                    
                 }
             }
             )
@@ -86,34 +86,6 @@ function creategrid(ncell, elecontainer){
 
 
   
-
-// function creategrid(){
-    
-//     elegrid.innerHTML = ""
-    
-//     if(diffoption === easy){
-//         for(let i = 1; i <= 60; i++){
-        
-        
-//             elegrid.innerHTML += `<div class="cell"></div>`;
-//         } 
-        
-//         const listcells = document.querySelectorAll(`.cell`);
-//         for(let i = 0; i < listcells.length ; i++){
-//             const cell = listcells[i];
-//             cell.addEventListener("click",
-//             function colour(){
-//                 this.classList.toggle("clicked");
-//                 cell.innerHTML = i + 1;
-//                 console.log("cella numero: " + (i + 1))
-//             }
-//             )
-//         }
-//     }  
-// }
-
-
-
 
 
 
