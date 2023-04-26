@@ -26,6 +26,7 @@ function(){
     let value = diffoption.options[diffoption.selectedIndex].value;
     console.log(value);
     creategrid(value, elegrid);
+    
 }
 )
 
@@ -35,7 +36,12 @@ function(){
 // FUNZIONE DI CREAZIONE DELLA GRIGLIA
 
 function creategrid(ncell, elecontainer){
-   
+    let bombs = [];
+    while(bombs.length < 16){
+         let bomb = Math.floor(Math.random() * ncell) + 1;
+        if(bombs.indexOf(bomb) === -1) bombs.push(bomb);
+    }
+    console.log(bombs);
     if(ncell <= 100){
         elecontainer.classList.remove("gridmedium","gridhard")
         elecontainer.classList.add("grideasy");
@@ -62,14 +68,20 @@ function creategrid(ncell, elecontainer){
                 cell.innerHTML = i + 1;
                 console.log("cella numero: " + (i + 1));
                 points++;
-                document.getElementById("score").innerHTML = points
+                document.getElementById("score").innerHTML = "Il tuo punteggio è: " + points
                 console.log(points)
+                if(bombs.includes(i + 1)){
+                    this.classList.toggle("bomb");
+                }
             }
             )
         }
     
 }
 
+
+
+  
 
 // function creategrid(){
     

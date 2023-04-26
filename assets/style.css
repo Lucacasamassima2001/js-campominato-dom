@@ -132,6 +132,9 @@ select{
     background-color: rgb(64, 76, 157);
 }
 
+.bomb{
+    background-color: red;
+}
 
 /* FOOTER */
 
