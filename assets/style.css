@@ -95,6 +95,10 @@ select{
     
 }
 
+.none{
+    display: none;
+}
+
 .grideasy{
     width: 600px;
     display: flex;

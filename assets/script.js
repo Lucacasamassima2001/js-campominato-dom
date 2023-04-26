@@ -15,17 +15,17 @@ const easy = parseInt(100);
 const medium = parseInt(81);
 const hard = parseInt(49);
 let points = 0;
-
+let finish = false
 
 // BOTTONE CON FUNZIONI
 
 btnplay.addEventListener("click",
-function(){
+function play(){
     textselect.classList.add("hidden")
     let diffoption = document.querySelector("#options");
     let value = diffoption.options[diffoption.selectedIndex].value;
     console.log(value);
-    creategrid(value, elegrid);
+    creategrid(value, elegrid)
     
 }
 )
@@ -36,6 +36,7 @@ function(){
 // FUNZIONE DI CREAZIONE DELLA GRIGLIA
 
 function creategrid(ncell, elecontainer){
+    let finish = false
     let bombs = [];
     while(bombs.length < 16){
          let bomb = Math.floor(Math.random() * ncell) + 1;
@@ -62,21 +63,24 @@ function creategrid(ncell, elecontainer){
         for(let i = 0; i < listcells.length ; i++){
             const cell = listcells[i];
     // FUNZIONE COLORI
+
             cell.addEventListener("click",
             function colour(){
-                this.classList.toggle("clicked");
-                cell.innerHTML = i + 1;
-                console.log("cella numero: " + (i + 1));
-                points++;
-                document.getElementById("score").innerHTML = "Il tuo punteggio è: " + points
-                console.log(points)
-                if(bombs.includes(i + 1)){
+                if(finish === false){
+                    this.classList.toggle("clicked");
+                    cell.innerHTML = i + 1;
+                    console.log("cella numero: " + (i + 1));
+                    points++;
+                    document.getElementById("score").innerHTML = "Il tuo punteggio è: " + points
+                    console.log(points)
+                }if(bombs.includes(i + 1)){
                     this.classList.toggle("bomb");
+                    document.getElementById("score").innerHTML = "Il tuo punteggio è: " + points + " Hai perso!";
+                    finish = true
                 }
             }
             )
         }
-    
 }
 
 
