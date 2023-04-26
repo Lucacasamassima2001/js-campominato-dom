@@ -76,7 +76,6 @@ function creategrid(ncell, elecontainer){
                     this.classList.add("bomb");
                     finish = true
                     document.getElementById("score").innerHTML = "Il tuo punteggio è: " + [points - 1] + " Hai perso!";
-                    
                 }
             }
             )
