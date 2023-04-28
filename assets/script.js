@@ -64,23 +64,26 @@ function creategrid(ncell, elecontainer){
     // FUNZIONE COLORI
 
             cell.addEventListener("click",
-            function (){
-                if(finish == false){
-                    this.classList.toggle("clicked");
-                    cell.innerHTML = i + 1;
-                    console.log("cella numero: " + (i + 1));
-                    points++;
-                    document.getElementById("score").innerHTML = "Il tuo punteggio è: " + points
-                    console.log(points)
-                }if(bombs.includes(i + 1)){
-                    this.classList.add("bomb");
-                    finish = true
-                    document.getElementById("score").innerHTML = "Il tuo punteggio è: " + [points - 1] + " Hai perso!";
+            function cellclick(){
+                cell.removeEventListener("click",cellclick)
+                if (finish == false){
+                    this.classList.toggle('clicked');
+                    this.innerHTML = i
+            
+                    if (bombs.includes(i + 1)) {
+                        this.classList.toggle('bomb');
+                        finish = true;
+                        score.innerHTML = `Hai perso! Il tuo punteggio è: ${points}`
+                        console.log(finish);
+                    } else {
+                        points++;
+                        score.innerHTML = `Il tuo punteggio è: ${points}`
+                    }
                 }
-            }
-            )
-        }
-}
+            }) 
+         }
+    }
+    
 
 
 
